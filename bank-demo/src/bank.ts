@@ -46,6 +46,36 @@ export default class Bank {
         return newAccount;
     }
 
+
+    /**
+     * Deposits a specified amount of money into an account.
+     * 
+     * @public
+     * @param {string} accountNumber - The account number of the account to deposit money into.
+     * @param {number} amount - The amount of money to deposit. Must be a positive number.
+     * @returns {string} - Returns a success message with the updated balance if successful, or an error message if the account does not exist or the amount is invalid.
+     */
+
+    // Public method to deposit money into an account
+    public deposit(accountNumber: string, amount: number): string {
+    const account = this.findAccount(accountNumber);
+
+    // Check if the account exists
+    if (!account) {
+        return 'Error: Account does not exist.';
+    }
+
+    // Check if the deposit amount is valid
+    if (amount <= 0) {
+        return 'Error: Deposit amount must be positive.';
+    }
+
+    // Deposit the amount and update the balance
+    account.balance += amount;
+    return `Deposit successful. New balance: ${account.balance}`;
+    }
+
+
     /**
      * Returns all bank accounts.
      * 
