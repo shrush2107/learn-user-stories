@@ -58,3 +58,55 @@ if (deposit4 === 'Error: Deposit amount must be positive.') {
 }
 
 console.log("User Story 3:");
+// Add money to the account for withdrawal
+bank.deposit("455765343", 1000); 
+
+// Scenario 1: Successful withdrawal
+const withdraw1 = bank.withdraw("455765343", 500);
+if (withdraw1.includes("Withdrawal successful")) {
+    console.log("Scenario 1 passed: Successful withdrawal");
+} else {
+    console.log("Scenario 1 failed");
+}
+
+// Scenario 2: Failed withdrawal due to insufficient funds
+const withdraw2 = bank.withdraw("455765343", 6000);
+if (withdraw2 === 'Error: Insufficient funds.') {
+    console.log("Scenario 2 passed: Insufficient funds withdrawal rejected");
+} else {
+    console.log("Scenario 2 failed");
+}
+
+// Scenario 3: Failed withdrawal due to invalid account
+const withdraw3 = bank.withdraw("999999999", 200);
+if (withdraw3 === 'Error: Account does not exist.') {
+    console.log("Scenario 3 passed: Invalid account withdrawal rejected");
+} else {
+    console.log("Scenario 3 failed");
+}
+
+// Scenario 4: Failed withdrawal due to invalid amount (negative withdrawal)
+const withdraw4 = bank.withdraw("455765343", -100);
+if (withdraw4 === 'Error: Withdrawal amount must be positive.') {
+    console.log("Scenario 4 passed: Negative withdrawal rejected");
+} else {
+    console.log("Scenario 4 failed");
+}
+
+console.log("User Story 4:")
+
+// Scenario 1: Successful balance check
+const balance1 = bank.checkBalance("455765343");
+if (balance1 === 'Current balance: 1000') {
+    console.log("Scenario 1 passed: Balance checked successfully");
+} else {
+    console.log("Scenario 1 failed");
+}
+
+// Scenario 2: Failed balance check due to invalid account
+const balance2 = bank.checkBalance("999999999");
+if (balance2 === 'Error: Account does not exist.') {
+    console.log("Scenario 2 passed: Invalid account balance check rejected");
+} else {
+    console.log("Scenario 2 failed");
+}

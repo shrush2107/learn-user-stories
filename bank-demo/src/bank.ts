@@ -106,7 +106,25 @@ export default class Bank {
         account.balance -= amount;
         return `Withdrawal successful. New balance: ${account.balance}`;
     }
+    
+    /**
+     * Checks the amount of money in an account.
+     * 
+     * @public
+     * @param {string} accountNumber - The account number of the account to check balance
+     * @returns {string} - Returns a success message if the account exisit, or an error message if the account does not exist.
+     */
+    
+    public checkBalance(accountNumber: string): string {
+        const account = this.findAccount(accountNumber);
 
+        // Check if the account exists
+        if (!account) {
+            return 'Error: Account does not exist.';
+        }
+
+        return `Current balance: ${account.balance}`;
+    }
 
 
     /**
