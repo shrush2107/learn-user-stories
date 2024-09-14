@@ -56,3 +56,5 @@ if (deposit4 === 'Error: Deposit amount must be positive.') {
 } else {
     console.log("Scenario 4 failed");
 }
+
+console.log("User Story 3:");
